@@ -1,0 +1,251 @@
+<mxfile host="drawio-plugin" modified="2026-10-11T09:24:43.198Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="22.1.22" etag="cvz83VJaW5-KbKuI6hv0" type="embed">
+  <diagram id="C4 Component — ставки для кол-центров" name="C4 Component — ставки для кол-центров">
+    <mxGraphModel dx="1381" dy="736" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2720" pageHeight="1290" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c2" value="&lt;b&gt;[Component] Банк «Стандарт» — передача ставок по депозитам в кол-центры&lt;/b&gt;&lt;br&gt;C4, уровень 3: компоненты модуля ставок в системе КЦ и сервиса выгрузки ставок для партнёра" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="20" y="10" width="2300" height="46" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="&lt;b&gt;БД АБС&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Container: Oracle, PL/SQL]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Таблица ставок. Новое: признак публикации и дата начала действия" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontSize=10;spacing=4;fillColor=#2A9D8F;strokeColor=#1E7066;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1010" y="1060" width="300" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="&lt;b&gt;Менеджер бэк-офиса депозитов&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Person]&lt;/i&gt;" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;" parent="1" vertex="1">
+          <mxGeometry x="1430" y="1060" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="&lt;b&gt;Kafka Connect: Debezium&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Container]&lt;/i&gt;&lt;br&gt;&lt;br&gt;CDC таблицы ставок (MVP)" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#999999;strokeColor=#6B6B6B;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1010" y="850" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="&lt;b&gt;Apache Kafka&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Container]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Топик deposit.rates: ключ — продукт и срок, log compaction — в топике всегда полный актуальный срез ставок" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#2A9D8F;strokeColor=#1E7066;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="960" y="620" width="400" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" value="&lt;b&gt;Система кол-центра банка&lt;/b&gt; [Software System]" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;fontColor=#333333;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" parent="1" vertex="1">
+          <mxGeometry x="40" y="90" width="860" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" value="&lt;b&gt;Оператор КЦ банка&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Person]&lt;/i&gt;" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="130" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" value="&lt;b&gt;Рабочее место оператора&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Container: React (UI платформы КЦ)]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Новое: виджет «Ставки по депозитам» с поиском по продукту и сроку" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#2A9D8F;strokeColor=#1E7066;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="300" y="130" width="330" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" value="&lt;b&gt;Модуль интеграции КЦ&lt;/b&gt; [Container: Java, Spring Boot — расширение платформы]" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;fontColor=#333333;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" parent="1" vertex="1">
+          <mxGeometry x="70" y="330" width="800" height="590" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" value="&lt;b&gt;Rates Query API&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: Spring Web, REST]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Отдаёт виджету актуальные ставки и дату обновления" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="340" y="390" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" value="&lt;b&gt;Rates Event Listener&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: Spring Kafka]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Читает deposit.rates, отбрасывает неутверждённые и повторные события" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="600" y="560" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" value="&lt;b&gt;Rates Repository&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: Spring Data JPA]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Хранит текущий срез ставок и историю изменений" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="340" y="560" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" value="&lt;b&gt;Freshness Monitor&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: Micrometer]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Метрика «возраст ставок», алерт при отсутствии обновлений" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="600" y="760" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c15" value="&lt;b&gt;БД платформы КЦ&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Container: PostgreSQL]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Новая схема rates" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontSize=10;spacing=4;fillColor=#999999;strokeColor=#6B6B6B;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="100" y="750" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c16" value="&lt;b&gt;Интеграционная платформа&lt;/b&gt; [Software System]" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;fontColor=#333333;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" parent="1" vertex="1">
+          <mxGeometry x="1420" y="90" width="900" height="760" as="geometry" />
+        </mxCell>
+        <mxCell id="c17" value="&lt;b&gt;Сервис выгрузки ставок для партнёров&lt;/b&gt; [Container: .NET 8]" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;dashPattern=8 4;fontColor=#333333;fontSize=12;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="135" width="840" height="690" as="geometry" />
+        </mxCell>
+        <mxCell id="c18" value="&lt;b&gt;Rates Event Listener&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: Confluent.Kafka]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Читает deposit.rates, обновляет срез актуальных ставок" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="180" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c19" value="&lt;b&gt;Export Scheduler&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: Hosted Service, Quartz.NET]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Полный файл ежедневно до 08:00 и внеочередной при изменении ставок (через 5 мин)" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1760" y="180" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c20" value="&lt;b&gt;Export Monitor&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: OpenTelemetry]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Метрики выгрузок, алерт если файл старше 26 часов или загрузка не удалась" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2020" y="180" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c21" value="&lt;b&gt;Snapshot Store&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: EF Core]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Срез ставок и журнал выгрузок: файл, версия, контрольная сумма" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="410" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c22" value="&lt;b&gt;File Builder&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: CsvHelper]&lt;/i&gt;&lt;br&gt;&lt;br&gt;CSV UTF-8 по спецификации и файл .sha256" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="1760" y="410" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c23" value="&lt;b&gt;SFTP Publisher&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Component: SSH.NET]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Загрузка во временное имя и переименование, повтор при ошибке" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="2020" y="410" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c24" value="&lt;b&gt;БД выгрузок&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Container: MS SQL]&lt;/i&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontSize=10;spacing=4;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1480" y="660" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c25" value="&lt;b&gt;SFTP-сервер&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Container: OpenSSH, DMZ]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Каталог /partner-cc/rates, доступ только на чтение по ключу, IP-allowlist, хранение 30 дней" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1990" y="940" width="310" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c26" value="&lt;b&gt;Система партнёрского КЦ&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[External System]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Забирает файл по расписанию" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#6B6B6B;strokeColor=#4D4D4D;fontColor=#ffffff;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="2420" y="940" width="260" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c27" value="&lt;b&gt;Оператор партнёрского КЦ&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Person]&lt;/i&gt;" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#08427B;strokeColor=#073B6F;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;" parent="1" vertex="1">
+          <mxGeometry x="2470" y="690" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c28" value="&lt;b&gt;Система мониторинга банка&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;[Software System]&lt;/i&gt;&lt;br&gt;&lt;br&gt;Алерты дежурной смене" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#999999;strokeColor=#6B6B6B;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="1010" y="70" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="c29" value="UC2: смотрит ставки" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c8" target="c9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c30" value="UC2: запрос ставок&lt;br&gt;[REST/JSON]" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c9" target="c11" edge="1">
+          <mxGeometry x="-0.45" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c31" value="чтение" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c11" target="c13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c32" value="upsert ставок" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c12" target="c13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c33" value="[JDBC]" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c13" target="c15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c34" value="дата последнего&lt;br&gt;обновления" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="c14" target="c13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="527" y="820" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c35" value="метрики, алерты" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="c14" target="c28" edge="1">
+          <mxGeometry x="0.3" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="940" y="820" />
+              <mxPoint x="940" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c36" value="UC2: deposit.rates" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#D9822B;fontColor=#D9822B;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="c6" target="c12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="680" />
+              <mxPoint x="900" y="596" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c37" value="UC1: утверждает ставку" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c4" target="c3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c38" value="CDC [LogMiner]" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="c3" target="c5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c39" value="UC1: изменения ставок" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#D9822B;fontColor=#D9822B;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="c5" target="c6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c40" value="UC3: deposit.rates" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#D9822B;fontColor=#D9822B;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="c6" target="c18" edge="1">
+          <mxGeometry x="0.2" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="680" />
+              <mxPoint x="1400" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c41" value="срез ставок" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c18" target="c21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c42" value="ставки&lt;br&gt;изменились" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c18" target="c19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c43" value="UC3: сформировать&lt;br&gt;файл" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c19" target="c22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c44" value="читает срез" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c22" target="c21" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c45" value="файл +&lt;br&gt;.sha256" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c22" target="c23" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c46" value="журнал выгрузки" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.85;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="c23" target="c21" edge="1">
+          <mxGeometry x="0.1" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2095" y="590" />
+              <mxPoint x="1692" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c47" value="[SQL]" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c21" target="c24" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c48" value="результат&lt;br&gt;выгрузки" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="c23" target="c20" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c49" value="метрики, алерты" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="1" source="c20" target="c28" edge="1">
+          <mxGeometry x="0.3" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2145" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c50" value="UC3: загрузка файла&lt;br&gt;[SFTP, SSH-ключ]" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.85;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c23" target="c25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c51" value="UC4: забирает файл&lt;br&gt;[SFTP]" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="c26" target="c25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c52" value="UC4: смотрит&lt;br&gt;ставки" style="html=1;rounded=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;fontColor=#5A5A5A;strokeWidth=1.5;fontSize=10;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="c27" target="c26" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c53" value="&lt;b&gt;Легенда&lt;/b&gt;" style="text;html=1;align=left;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1000" width="300" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="c54" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#85BBF0;strokeColor=#5D82A8;fontColor=#000000;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1030" width="40" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c55" value="Компонент (новый)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="90" y="1030" width="320" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c56" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#438DD5;strokeColor=#2E6295;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1060" width="40" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c57" value="Новый контейнер / система" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="90" y="1060" width="320" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c58" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#2A9D8F;strokeColor=#1E7066;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1090" width="40" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c59" value="Существующий элемент, дорабатывается" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="90" y="1090" width="320" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c60" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#999999;strokeColor=#6B6B6B;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1120" width="40" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c61" value="Существующий элемент без изменений" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="90" y="1120" width="320" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c62" value="" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fontSize=11;align=center;verticalAlign=middle;spacing=6;fillColor=#6B6B6B;strokeColor=#4D4D4D;fontColor=#ffffff;dashed=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1150" width="40" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c63" value="Внешняя система" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="90" y="1150" width="320" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c64" value="" style="text;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1191" width="1" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c65" value="" style="text;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="1191" width="1" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c66" value="" style="html=1;endArrow=block;endFill=1;strokeColor=#5A5A5A;strokeWidth=1.5;" parent="1" source="c64" target="c65" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c67" value="Синхронный вызов / чтение" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="90" y="1180" width="320" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c68" value="" style="text;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1221" width="1" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c69" value="" style="text;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="1221" width="1" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c70" value="" style="html=1;endArrow=block;endFill=1;strokeColor=#D9822B;strokeWidth=1.5;dashed=1;" parent="1" source="c68" target="c69" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c71" value="Асинхронно через Kafka" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="90" y="1210" width="320" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="c72" value="UC1–UC5 — сценарии из раздела «Функциональные требования» ADR" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=2;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1240" width="520" height="22" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
