@@ -1,0 +1,15 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# draw.io
+*.drawio.bkp
+*.drawio.dtmp
+.$*.drawio
+.$*.bkp
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
